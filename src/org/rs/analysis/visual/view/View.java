@@ -1,7 +1,7 @@
-package org.pixie.rs.client.visual.view;
+package org.rs.analysis.visual.view;
 
-import org.pixie.rs.client.visual.controller.Controller;
-import org.pixie.rs.client.visual.model.Model;
+import org.rs.analysis.visual.controller.Controller;
+import org.rs.analysis.visual.model.Model;
 
 /**
  * Project JHook

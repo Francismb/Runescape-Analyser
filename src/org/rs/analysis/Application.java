@@ -1,9 +1,10 @@
-package org.pixie.rs.client;
+package org.rs.analysis;
 
-import org.pixie.rs.client.game.RS3Game;
-import org.pixie.rs.client.visual.VisualManager;
+import org.rs.analysis.visual.VisualManager;
+import org.rs.analysis.visual.controller.MainController;
+import sun.applet.Main;
 
-import javax.swing.*;
+import java.awt.*;
 
 /**
  * Project rsclient
@@ -19,6 +20,7 @@ public class Application {
         frame.getContentPane().add(game.getApplet());
         frame.pack();(*/
         VisualManager.init();
+        VisualManager.getController(MainController.class).show();
     }
 
 }

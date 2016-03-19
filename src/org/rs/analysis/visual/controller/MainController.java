@@ -1,11 +1,10 @@
-package org.pixie.rs.client.visual.controller;
+package org.rs.analysis.visual.controller;
 
-import org.pixie.rs.client.game.OSRSGame;
-import org.pixie.rs.client.game.RS3Game;
-import org.pixie.rs.client.visual.model.MainModel;
-import org.pixie.rs.client.visual.view.MainView;
+import org.rs.analysis.game.OSRSGame;
+import org.rs.analysis.game.RS3Game;
+import org.rs.analysis.visual.model.MainModel;
+import org.rs.analysis.visual.view.MainView;
 
-import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -22,7 +21,6 @@ public class MainController extends Controller<MainView, MainModel> {
     @Override
     public void init() {
         view.init();
-        show();
     }
 
     @Override

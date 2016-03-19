@@ -1,7 +1,7 @@
-package org.pixie.rs.client.visual;
+package org.rs.analysis.visual;
 
-import org.pixie.rs.client.visual.controller.Controller;
-import org.pixie.rs.client.visual.controller.MainController;
+import org.rs.analysis.visual.controller.Controller;
+import org.rs.analysis.visual.controller.MainController;
 
 import javax.swing.*;
 import java.util.HashSet;

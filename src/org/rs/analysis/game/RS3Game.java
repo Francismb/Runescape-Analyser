@@ -1,8 +1,8 @@
-package org.pixie.rs.client.game;
+package org.rs.analysis.game;
 
-import org.pixie.rs.client.game.applet.RSAppletStub;
-import org.pixie.rs.client.utility.http.GameCrawler;
-import org.pixie.rs.client.utility.reflection.Reflection;
+import org.rs.analysis.game.applet.RSAppletStub;
+import org.rs.analysis.utility.http.GameCrawler;
+import org.rs.analysis.utility.reflection.Reflection;
 
 import java.applet.Applet;
 import java.applet.AppletStub;

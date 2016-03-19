@@ -1,6 +1,6 @@
-package org.pixie.rs.client.utility.http;
+package org.rs.analysis.utility.http;
 
-import org.pixie.rs.client.utility.Utility;
+import org.rs.analysis.utility.Utility;
 
 import java.util.HashMap;
 import java.util.Map;

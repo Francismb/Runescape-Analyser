@@ -1,4 +1,4 @@
-package org.pixie.rs.client.utility;
+package org.rs.analysis.utility;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package org.pixie.rs.client.utility.reflection;
+package org.rs.analysis.utility.reflection;
 
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;

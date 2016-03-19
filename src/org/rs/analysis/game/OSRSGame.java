@@ -1,4 +1,4 @@
-package org.pixie.rs.client.game;
+package org.rs.analysis.game;
 
 import java.applet.Applet;
 import java.applet.AppletStub;

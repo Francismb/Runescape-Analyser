@@ -1,7 +1,7 @@
-package org.pixie.rs.client.visual.view;
+package org.rs.analysis.visual.view;
 
-import org.pixie.rs.client.visual.controller.MainController;
-import org.pixie.rs.client.visual.model.MainModel;
+import org.rs.analysis.visual.controller.MainController;
+import org.rs.analysis.visual.model.MainModel;
 
 import javax.swing.*;
 import java.awt.*;

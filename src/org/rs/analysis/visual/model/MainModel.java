@@ -1,10 +1,9 @@
-package org.pixie.rs.client.visual.model;
+package org.rs.analysis.visual.model;
 
 
-import org.pixie.rs.client.game.Game;
-import org.pixie.rs.client.visual.VisualManager;
-import org.pixie.rs.client.visual.controller.MainController;
-import org.pixie.rs.client.visual.view.MainView;
+import org.rs.analysis.game.Game;
+import org.rs.analysis.visual.controller.MainController;
+import org.rs.analysis.visual.view.MainView;
 
 /**
  * Project JHook

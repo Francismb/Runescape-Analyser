@@ -1,6 +1,7 @@
-package org.pixie.rs.client.game.applet;
+package org.rs.analysis.game.applet;
 
 import java.applet.AppletContext;
+import java.applet.AppletStub;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
  * Project rsclient
  * Created by Francis on 26/08/2015.
  */
-public class RSAppletStub implements java.applet.AppletStub {
+public class RSAppletStub implements AppletStub {
 
     private final String codebase;
     private final Map<String, String> parameters;
@@ -27,7 +28,6 @@ public class RSAppletStub implements java.applet.AppletStub {
     @Override
     public URL getDocumentBase() {
         try {
-            System.out.println("");
             return new URL(codebase);
         } catch (MalformedURLException e) {
             e.printStackTrace();

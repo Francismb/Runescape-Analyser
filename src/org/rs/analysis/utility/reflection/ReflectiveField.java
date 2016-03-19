@@ -1,4 +1,4 @@
-package org.pixie.rs.client.utility.reflection;
+package org.rs.analysis.utility.reflection;
 
 /**
  * Project rsclient
