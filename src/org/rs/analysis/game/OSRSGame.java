@@ -27,7 +27,13 @@ public class OSRSGame extends Game {
     }
 
     @Override
-    public ClassLoader getClassLoader() {
+    public Class<?> getClass(String name) {
         return null;
     }
+
+    @Override
+    public Class<?>[] getClasses() {
+        return new Class<?>[0];
+    }
+
 }

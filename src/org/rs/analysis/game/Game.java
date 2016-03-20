@@ -29,9 +29,14 @@ public abstract class Game {
     public abstract AppletStub getAppletStub();
 
     /**
-     * @return the games {@link java.lang.ClassLoader}.
+     * @return one of the games {@link Class}
      */
-    public abstract ClassLoader getClassLoader();
+    public abstract Class<?> getClass(final String name);
+
+    /**
+     * @return all of the games {@link Class}es
+     */
+    public abstract Class<?>[] getClasses();
 
     /**
      * Initializes the applet and starts the game.
@@ -52,21 +57,6 @@ public abstract class Game {
         /* Start the applet */
         applet.init();
         applet.start();
-    }
-
-    /**
-     * Loads a class with the games {@link java.lang.ClassLoader}.
-     * @param name the name of the class to be loaded.
-     * @return <code>null</code> if it could not find the class else
-     * it returns the {@link java.lang.Class} with the corresponding
-     */
-    public Class<?> loadClass(final String name) {
-        try {
-            return getClassLoader().loadClass(name);
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        }
-        return null;
     }
 
 }

@@ -30,7 +30,7 @@ public class ReflectiveField<T> {
     }
 
     public T get() {
-        if (System.currentTimeMillis() - cache_time > 300) {
+        if ((System.currentTimeMillis() - cache_time) > 300) {
             cache = (T) (multiplier != -1 ? ((Integer) Reflection.getValue(this)) * multiplier : Reflection.getValue(this));
             cache_time = System.currentTimeMillis();
         }

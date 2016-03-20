@@ -9,6 +9,7 @@ import java.applet.AppletStub;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.net.URLClassLoader;
+import java.util.Vector;
 
 /**
  * Project rsclient
@@ -39,6 +40,13 @@ public class RS3Game extends Game {
             final ClassLoader classLoader1 = new URLClassLoader(new URL[]{new URL(GAME_URL + crawler.archive)});
             final Class<?> clazz = classLoader1.loadClass(crawler.initialClass);
             applet = (Applet) clazz.newInstance();
+
+            /* Search through the applet class to find a field which contains the correct class loader */
+            for (final Field field : applet.getClass().getDeclaredFields()) {
+                if (field.getType().equals(Class.class)) {
+                    classLoader = ((Class) Reflection.getValue(applet.getClass(), field, applet)).getClassLoader();
+                }
+            }
         } catch (final Throwable t) {
             t.printStackTrace();
         }
@@ -61,18 +69,28 @@ public class RS3Game extends Game {
     }
 
     @Override
-    public ClassLoader getClassLoader() {
+    public Class<?> getClass(String name) {
         if (classLoader == null) {
-            if (applet == null || stub == null) {
-                throw new NullPointerException("Game class loader has not been prepared");
-            }
-            /* Search through the applet class to find a field which contains the correct class loader */
-            for (final Field field : applet.getClass().getDeclaredFields()) {
-                if (field.getType().equals(Class.class)) {
-                    classLoader = ((Class) Reflection.getValue(applet.getClass(), field, applet)).getClassLoader();
-                }
-            }
+            throw new NullPointerException("Game class loader has not been prepared");
         }
-        return classLoader;
+        try {
+            return classLoader.loadClass(name);
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
+
+    @Override
+    public Class<?>[] getClasses() {
+        if (classLoader == null) {
+            throw new NullPointerException("Game class loader has not been prepared");
+        }
+        // We find all the classes in a private vector inside the
+        // class loader class which contains all the loaded classes
+        final Vector<Class> classes = (Vector<Class>) Reflection.getValue(ClassLoader.class, "classes", classLoader);
+        return classes.toArray(new Class[classes.size()]);
+    }
+
+
 }
