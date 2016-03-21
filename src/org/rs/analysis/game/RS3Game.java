@@ -22,29 +22,31 @@ public class RS3Game extends Game {
     private Applet applet;
     private RSAppletStub stub;
     private ClassLoader classLoader;
-    private GameCrawler crawler;
 
     private static final String GAME_URL = "http://world2.runescape.com/";
 
     @Override
     public void prepare() {
-        /* Create a crawler and crawl for information */
-        crawler = new GameCrawler(GAME_URL);
+        // Create a crawler and crawl for information
+        final GameCrawler crawler = new GameCrawler(GAME_URL);
         crawler.crawl();
 
-        /* Create an rs applet stub */
-        stub = new RSAppletStub(GAME_URL, crawler.parameters);
-
         try {
-            /* Create a class loader and create a new instance of the applet class */
+            // Create a class loader and create a new instance of the applet class
             final ClassLoader classLoader1 = new URLClassLoader(new URL[]{new URL(GAME_URL + crawler.archive)});
             final Class<?> clazz = classLoader1.loadClass(crawler.initialClass);
             applet = (Applet) clazz.newInstance();
 
-            /* Search through the applet class to find a field which contains the correct class loader */
+            // Create an rs applet stub
+            stub = new RSAppletStub(applet, GAME_URL, crawler.parameters);
+
+            // Search through the applet class to find a field which contains the correct class loader
             for (final Field field : applet.getClass().getDeclaredFields()) {
                 if (field.getType().equals(Class.class)) {
-                    classLoader = ((Class) Reflection.getValue(applet.getClass(), field, applet)).getClassLoader();
+                    final Object game = Reflection.getValue(applet.getClass(), field, applet);
+                    if (game != null) {
+                        classLoader = game.getClass().getClassLoader();
+                    }
                 }
             }
         } catch (final Throwable t) {

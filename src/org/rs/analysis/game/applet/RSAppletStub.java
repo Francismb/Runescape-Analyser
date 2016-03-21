@@ -1,5 +1,6 @@
 package org.rs.analysis.game.applet;
 
+import java.applet.Applet;
 import java.applet.AppletContext;
 import java.applet.AppletStub;
 import java.net.MalformedURLException;
@@ -12,12 +13,15 @@ import java.util.Map;
  */
 public class RSAppletStub implements AppletStub {
 
+    private RSAppletContext context;
+
     private final String codebase;
     private final Map<String, String> parameters;
 
-    public RSAppletStub(final String codebase, final Map<String, String> parameters) {
+    public RSAppletStub(final Applet applet, final String codebase, final Map<String, String> parameters) {
         this.codebase = codebase;
         this.parameters = parameters;
+        this.context = new RSAppletContext(applet);
     }
 
     @Override
@@ -52,11 +56,10 @@ public class RSAppletStub implements AppletStub {
 
     @Override
     public AppletContext getAppletContext() {
-        return null;
+        return context;
     }
 
     @Override
     public void appletResize(int width, int height) {
-
     }
 }
